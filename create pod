@@ -1,0 +1,7 @@
+def label = "mypod-${UUID.randomUUID().toString()}"
+podTemplate(label: label, containers: [
+containerTemplate(name: 'ubuntu', image: 'ubuntu', ttyEnabled: true, command: 'cat'),
+]) {
+node(label) {
+stage('Disks Usage') {
+sh "df -h"
